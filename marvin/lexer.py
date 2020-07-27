@@ -1,5 +1,5 @@
 from ply import lex
-
+string_state = False
 reserved_tokens={
   'if' : 'IF',
   'else':'ELSE',
@@ -24,7 +24,7 @@ reserved_tokens={
 tokens = list(reserved_tokens.values())+[
     'NUMBER',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
-    'LPAREN', 'RPAREN','NAME','ACTUATE','EQUAL','LCURLY','RCURLY','COMMENT','QUOTE','SPACE','NEWLINE','LESS','MORE','LESSEQUAL','MOREEQUAL','EQUALEQUAL','NOTEQUAL'
+    'LPAREN', 'RPAREN','NAME','ACTUATE','EQUAL','LCURLY','RCURLY','COMMENT','QUOTE','SPACE','NEWLINE','LESS','MORE','LESSEQUAL','MOREEQUAL','EQUALEQUAL','NOTEQUAL','STRING'
 ]
 t_LCURLY  = R'\{'
 t_RCURLY  = R'\}'
@@ -43,11 +43,28 @@ t_DIVIDE  = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_COMMENT = r'//'
-t_QUOTE = '\'|"'
-t_SPACE = r'[ ]'
+def t_QUOTE(t):
+  '\'|"'
+  global string_state
+  if(string_state == True):
+    string_state = False
+  else:
+    string_state = True
+  return t
+
+def t_SPACE(t):
+  r'[ ]'
+  if(string_state == True):
+      t.type = "STRING"
+  else:
+      t.type = 'SPACE'
+  return t
+
 def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    if t.value in reserved_tokens:
+    if(string_state == True):
+      t.type = "STRING"
+    elif t.value in reserved_tokens:
         t.type = reserved_tokens[t.value]
     else:
         t.type = 'NAME'

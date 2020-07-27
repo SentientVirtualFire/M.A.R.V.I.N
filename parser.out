@@ -14,6 +14,7 @@ Unused terminals:
     QUOTE
     RETURN
     STR
+    STRING
     TWO
     WHILE
 
@@ -108,6 +109,7 @@ RETURN               :
 RPAREN               : 9 11 13 13 14 14 15 16 17 18 30
 SPACE                : 2 2 3 4 6 6 7 8 11
 STR                  : 
+STRING               : 
 TIMES                : 26
 TRUE                 : 19
 TWO                  : 

@@ -5,7 +5,8 @@ functions = {}
 cur_name = ""
 if_state = False
 if_right_yet = False
-
+string_state = False
+string_itself = ""
 
 def p_statement_assign(p):
   '''statement : NAME EQUAL expression
@@ -118,7 +119,24 @@ def p_statement_actuate(p):
   else:
     print(None)
 """
+def p_expression_string(p):
+  ''
+def p_string_quote(p):
+  'string : QUOTE'
+  global string_state
+  if(string_state == True):
+    string_state = False
+  else:
+    string_state = True
 
+def p_string_string(p):
+  'expression : STRING'
+  global string_state
+  global string_itself
+  if(string_state == True):
+    string_itself+= p[1]
+  else:
+    pass
 
 def p_statement_output(p):
   '''statement :  OUTPUT LPAREN expression RPAREN
@@ -228,7 +246,8 @@ def p_condition_lessthan(p):
       p[0] = int(names[p[1]]) < int(p[3])
     else:
       p[0] = int(p[1]) < int(p[3])
-  
+  except:
+    pass
 
   
 """
@@ -247,6 +266,8 @@ def p_condition_moreThanEqual(p):
       p[0] = int(names[p[1]]) >= int(p[3])
     else:
       p[0] = int(p[1]) >= int(p[3])
+  except:
+    pass
 
 """
 LESS THAN OR EQUAL TO PARSE
@@ -257,12 +278,15 @@ def p_condition_lessThanEqual(p):
   | expression LESSEQUAL expression
   
   '''
-  if (type(p[1]) == str) and (type(p[3]) == str):
-    p[0] = int(names[p[1]]) <= int(names[p[3]])
-  elif (type(p[1]) == str) and (type(p[3]) != str):
-    p[0] = int(names[p[1]]) <= int(p[3])
-  else:
-    p[0] = int(p[1]) <= int(p[3])
+  try:
+    if (type(p[1]) == str) and (type(p[3]) == str):
+      p[0] = int(names[p[1]]) <= int(names[p[3]])
+    elif (type(p[1]) == str) and (type(p[3]) != str):
+      p[0] = int(names[p[1]]) <= int(p[3])
+    else:
+      p[0] = int(p[1]) <= int(p[3])
+  except:
+    pass
   
 def p_condition_EqualEqual(p):
   '''condition : statement EQUALEQUAL statement
@@ -270,13 +294,15 @@ def p_condition_EqualEqual(p):
   | expression EQUALEQUAL expression
   
   '''
-  if (type(p[1]) == str) and (type(p[3]) == str):
-    p[0] = int(names[p[1]]) == int(names[p[3]])
-  elif (type(p[1]) == str) and (type(p[3]) != str):
-    p[0] = int(names[p[1]]) == int(p[3])
-  else:
-    p[0] = int(p[1]) == int(p[3])
-
+  try:
+    if (type(p[1]) == str) and (type(p[3]) == str):
+      p[0] = int(names[p[1]]) == int(names[p[3]])
+    elif (type(p[1]) == str) and (type(p[3]) != str):
+      p[0] = int(names[p[1]]) == int(p[3])
+    else:
+      p[0] = int(p[1]) == int(p[3])
+  except:
+    pass
 
 def p_condition_NotEqual(p):
   '''condition : statement NOTEQUAL statement
@@ -284,12 +310,15 @@ def p_condition_NotEqual(p):
   | expression NOTEQUAL expression
   
   '''
-  if (type(p[1]) == str) and (type(p[3]) == str):
-    p[0] = int(names[p[1]]) != int(names[p[3]])
-  elif (type(p[1]) == str) and (type(p[3]) != str):
-    p[0] = int(names[p[1]]) != int(p[3])
-  else:
-    p[0] = int(p[1]) != int(p[3])
+  try:
+    if (type(p[1]) == str) and (type(p[3]) == str):
+      p[0] = int(names[p[1]]) != int(names[p[3]])
+    elif (type(p[1]) == str) and (type(p[3]) != str):
+      p[0] = int(names[p[1]]) != int(p[3])
+    else:
+      p[0] = int(p[1]) != int(p[3])
+  except:
+    pass
   
  # Error rule for syntax errors
 def p_error(p):
