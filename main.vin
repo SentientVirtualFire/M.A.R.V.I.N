@@ -1,0 +1,9 @@
+create owo()=>{
+output(1+1)
+name=1
+output(name)
+create owo2()=>{
+output("EPIC")
+}
+if(1>0)=>{owo2()}
+}

@@ -1,0 +1,2602 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMB
+    COMMENT
+    DCT
+    FLOAT
+    FOR
+    INT
+    LST
+    MOD
+    NEWLINE
+    QUOTE
+    RETURN
+    STR
+    TWO
+    WHILE
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> NAME EQUAL expression
+Rule 2     statement -> NAME SPACE EQUAL SPACE expression
+Rule 3     statement -> NAME SPACE EQUAL expression
+Rule 4     statement -> NAME EQUAL SPACE expression
+Rule 5     statement -> NAME EQUAL statement
+Rule 6     statement -> NAME SPACE EQUAL SPACE statement
+Rule 7     statement -> NAME SPACE EQUAL statement
+Rule 8     statement -> NAME EQUAL SPACE statement
+Rule 9     statement -> NAME LPAREN RPAREN
+Rule 10    statement -> RCURLY
+Rule 11    statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+Rule 12    statement -> NAME
+Rule 13    statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+Rule 14    statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+Rule 15    statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+Rule 16    statement -> OUTPUT LPAREN expression RPAREN
+Rule 17    statement -> OUTPUT LPAREN statement RPAREN
+Rule 18    statement -> OUTPUT LPAREN condition RPAREN
+Rule 19    statement -> TRUE
+Rule 20    statement -> FALSE
+Rule 21    statement -> NONE
+Rule 22    expression -> expression PLUS term
+Rule 23    expression -> statement PLUS expression
+Rule 24    expression -> expression MINUS term
+Rule 25    expression -> term
+Rule 26    term -> term TIMES factor
+Rule 27    term -> term DIVIDE factor
+Rule 28    term -> factor
+Rule 29    factor -> NUMBER
+Rule 30    factor -> LPAREN expression RPAREN
+Rule 31    condition -> statement MORE statement
+Rule 32    condition -> statement MORE expression
+Rule 33    condition -> expression MORE expression
+Rule 34    condition -> statement LESS statement
+Rule 35    condition -> statement LESS expression
+Rule 36    condition -> expression LESS expression
+Rule 37    condition -> statement MOREEQUAL statement
+Rule 38    condition -> statement MOREEQUAL expression
+Rule 39    condition -> expression MOREEQUAL expression
+Rule 40    condition -> statement LESSEQUAL statement
+Rule 41    condition -> statement LESSEQUAL expression
+Rule 42    condition -> expression LESSEQUAL expression
+Rule 43    condition -> statement EQUALEQUAL statement
+Rule 44    condition -> statement EQUALEQUAL expression
+Rule 45    condition -> expression EQUALEQUAL expression
+Rule 46    condition -> statement NOTEQUAL statement
+Rule 47    condition -> statement NOTEQUAL expression
+Rule 48    condition -> expression NOTEQUAL expression
+
+Terminals, with rules where they appear
+
+ACTUATE              : 11 13 14 15
+COMB                 : 
+COMMENT              : 
+CREATE               : 11
+DCT                  : 
+DIVIDE               : 27
+ELF                  : 14
+ELSE                 : 15
+EQUAL                : 1 2 3 4 5 6 7 8
+EQUALEQUAL           : 43 44 45
+FALSE                : 20
+FLOAT                : 
+FOR                  : 
+IF                   : 13
+INT                  : 
+LCURLY               : 11 13 14 15
+LESS                 : 34 35 36
+LESSEQUAL            : 40 41 42
+LPAREN               : 9 11 13 13 14 14 15 16 17 18 30
+LST                  : 
+MINUS                : 24
+MOD                  : 
+MORE                 : 31 32 33
+MOREEQUAL            : 37 38 39
+NAME                 : 1 2 3 4 5 6 7 8 9 11 12 13 14
+NEWLINE              : 
+NONE                 : 21
+NOTEQUAL             : 46 47 48
+NUMBER               : 29
+OUTPUT               : 16 17 18
+PLUS                 : 22 23
+QUOTE                : 
+RCURLY               : 10 13 14 15
+RETURN               : 
+RPAREN               : 9 11 13 13 14 14 15 16 17 18 30
+SPACE                : 2 2 3 4 6 6 7 8 11
+STR                  : 
+TIMES                : 26
+TRUE                 : 19
+TWO                  : 
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+condition            : 13 14 15 18
+expression           : 1 2 3 4 16 22 23 24 30 32 33 33 35 36 36 38 39 39 41 42 42 44 45 45 47 48 48
+factor               : 26 27 28
+statement            : 5 6 7 8 15 17 23 31 31 32 34 34 35 37 37 38 40 40 41 43 43 44 46 46 47 0
+term                 : 22 24 25 26 27
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> NAME . EQUAL expression
+    (2) statement -> NAME . SPACE EQUAL SPACE expression
+    (3) statement -> NAME . SPACE EQUAL expression
+    (4) statement -> NAME . EQUAL SPACE expression
+    (5) statement -> NAME . EQUAL statement
+    (6) statement -> NAME . SPACE EQUAL SPACE statement
+    (7) statement -> NAME . SPACE EQUAL statement
+    (8) statement -> NAME . EQUAL SPACE statement
+    (9) statement -> NAME . LPAREN RPAREN
+    (12) statement -> NAME .
+
+    EQUAL           shift and go to state 12
+    SPACE           shift and go to state 13
+    LPAREN          shift and go to state 14
+    $end            reduce using rule 12 (statement -> NAME .)
+    PLUS            reduce using rule 12 (statement -> NAME .)
+    MORE            reduce using rule 12 (statement -> NAME .)
+    LESS            reduce using rule 12 (statement -> NAME .)
+    MOREEQUAL       reduce using rule 12 (statement -> NAME .)
+    LESSEQUAL       reduce using rule 12 (statement -> NAME .)
+    EQUALEQUAL      reduce using rule 12 (statement -> NAME .)
+    NOTEQUAL        reduce using rule 12 (statement -> NAME .)
+    RPAREN          reduce using rule 12 (statement -> NAME .)
+    RCURLY          reduce using rule 12 (statement -> NAME .)
+
+
+state 3
+
+    (10) statement -> RCURLY .
+
+    $end            reduce using rule 10 (statement -> RCURLY .)
+    PLUS            reduce using rule 10 (statement -> RCURLY .)
+    MORE            reduce using rule 10 (statement -> RCURLY .)
+    LESS            reduce using rule 10 (statement -> RCURLY .)
+    MOREEQUAL       reduce using rule 10 (statement -> RCURLY .)
+    LESSEQUAL       reduce using rule 10 (statement -> RCURLY .)
+    EQUALEQUAL      reduce using rule 10 (statement -> RCURLY .)
+    NOTEQUAL        reduce using rule 10 (statement -> RCURLY .)
+    RPAREN          reduce using rule 10 (statement -> RCURLY .)
+    RCURLY          reduce using rule 10 (statement -> RCURLY .)
+
+
+state 4
+
+    (11) statement -> CREATE . SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+
+    SPACE           shift and go to state 15
+
+
+state 5
+
+    (13) statement -> IF . LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+
+    LPAREN          shift and go to state 16
+
+
+state 6
+
+    (14) statement -> ELF . LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+
+    LPAREN          shift and go to state 17
+
+
+state 7
+
+    (15) statement -> ELSE . LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+
+    LPAREN          shift and go to state 18
+
+
+state 8
+
+    (16) statement -> OUTPUT . LPAREN expression RPAREN
+    (17) statement -> OUTPUT . LPAREN statement RPAREN
+    (18) statement -> OUTPUT . LPAREN condition RPAREN
+
+    LPAREN          shift and go to state 19
+
+
+state 9
+
+    (19) statement -> TRUE .
+
+    $end            reduce using rule 19 (statement -> TRUE .)
+    PLUS            reduce using rule 19 (statement -> TRUE .)
+    MORE            reduce using rule 19 (statement -> TRUE .)
+    LESS            reduce using rule 19 (statement -> TRUE .)
+    MOREEQUAL       reduce using rule 19 (statement -> TRUE .)
+    LESSEQUAL       reduce using rule 19 (statement -> TRUE .)
+    EQUALEQUAL      reduce using rule 19 (statement -> TRUE .)
+    NOTEQUAL        reduce using rule 19 (statement -> TRUE .)
+    RPAREN          reduce using rule 19 (statement -> TRUE .)
+    RCURLY          reduce using rule 19 (statement -> TRUE .)
+
+
+state 10
+
+    (20) statement -> FALSE .
+
+    $end            reduce using rule 20 (statement -> FALSE .)
+    PLUS            reduce using rule 20 (statement -> FALSE .)
+    MORE            reduce using rule 20 (statement -> FALSE .)
+    LESS            reduce using rule 20 (statement -> FALSE .)
+    MOREEQUAL       reduce using rule 20 (statement -> FALSE .)
+    LESSEQUAL       reduce using rule 20 (statement -> FALSE .)
+    EQUALEQUAL      reduce using rule 20 (statement -> FALSE .)
+    NOTEQUAL        reduce using rule 20 (statement -> FALSE .)
+    RPAREN          reduce using rule 20 (statement -> FALSE .)
+    RCURLY          reduce using rule 20 (statement -> FALSE .)
+
+
+state 11
+
+    (21) statement -> NONE .
+
+    $end            reduce using rule 21 (statement -> NONE .)
+    PLUS            reduce using rule 21 (statement -> NONE .)
+    MORE            reduce using rule 21 (statement -> NONE .)
+    LESS            reduce using rule 21 (statement -> NONE .)
+    MOREEQUAL       reduce using rule 21 (statement -> NONE .)
+    LESSEQUAL       reduce using rule 21 (statement -> NONE .)
+    EQUALEQUAL      reduce using rule 21 (statement -> NONE .)
+    NOTEQUAL        reduce using rule 21 (statement -> NONE .)
+    RPAREN          reduce using rule 21 (statement -> NONE .)
+    RCURLY          reduce using rule 21 (statement -> NONE .)
+
+
+state 12
+
+    (1) statement -> NAME EQUAL . expression
+    (4) statement -> NAME EQUAL . SPACE expression
+    (5) statement -> NAME EQUAL . statement
+    (8) statement -> NAME EQUAL . SPACE statement
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    SPACE           shift and go to state 21
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 20
+    statement                      shift and go to state 22
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 13
+
+    (2) statement -> NAME SPACE . EQUAL SPACE expression
+    (3) statement -> NAME SPACE . EQUAL expression
+    (6) statement -> NAME SPACE . EQUAL SPACE statement
+    (7) statement -> NAME SPACE . EQUAL statement
+
+    EQUAL           shift and go to state 27
+
+
+state 14
+
+    (9) statement -> NAME LPAREN . RPAREN
+
+    RPAREN          shift and go to state 28
+
+
+state 15
+
+    (11) statement -> CREATE SPACE . NAME LPAREN RPAREN ACTUATE LCURLY
+
+    NAME            shift and go to state 29
+
+
+state 16
+
+    (13) statement -> IF LPAREN . condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (31) condition -> . statement MORE statement
+    (32) condition -> . statement MORE expression
+    (33) condition -> . expression MORE expression
+    (34) condition -> . statement LESS statement
+    (35) condition -> . statement LESS expression
+    (36) condition -> . expression LESS expression
+    (37) condition -> . statement MOREEQUAL statement
+    (38) condition -> . statement MOREEQUAL expression
+    (39) condition -> . expression MOREEQUAL expression
+    (40) condition -> . statement LESSEQUAL statement
+    (41) condition -> . statement LESSEQUAL expression
+    (42) condition -> . expression LESSEQUAL expression
+    (43) condition -> . statement EQUALEQUAL statement
+    (44) condition -> . statement EQUALEQUAL expression
+    (45) condition -> . expression EQUALEQUAL expression
+    (46) condition -> . statement NOTEQUAL statement
+    (47) condition -> . statement NOTEQUAL expression
+    (48) condition -> . expression NOTEQUAL expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    condition                      shift and go to state 30
+    statement                      shift and go to state 31
+    expression                     shift and go to state 32
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 17
+
+    (14) statement -> ELF LPAREN . condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (31) condition -> . statement MORE statement
+    (32) condition -> . statement MORE expression
+    (33) condition -> . expression MORE expression
+    (34) condition -> . statement LESS statement
+    (35) condition -> . statement LESS expression
+    (36) condition -> . expression LESS expression
+    (37) condition -> . statement MOREEQUAL statement
+    (38) condition -> . statement MOREEQUAL expression
+    (39) condition -> . expression MOREEQUAL expression
+    (40) condition -> . statement LESSEQUAL statement
+    (41) condition -> . statement LESSEQUAL expression
+    (42) condition -> . expression LESSEQUAL expression
+    (43) condition -> . statement EQUALEQUAL statement
+    (44) condition -> . statement EQUALEQUAL expression
+    (45) condition -> . expression EQUALEQUAL expression
+    (46) condition -> . statement NOTEQUAL statement
+    (47) condition -> . statement NOTEQUAL expression
+    (48) condition -> . expression NOTEQUAL expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    condition                      shift and go to state 33
+    statement                      shift and go to state 31
+    expression                     shift and go to state 32
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 18
+
+    (15) statement -> ELSE LPAREN . condition RPAREN ACTUATE LCURLY statement RCURLY
+    (31) condition -> . statement MORE statement
+    (32) condition -> . statement MORE expression
+    (33) condition -> . expression MORE expression
+    (34) condition -> . statement LESS statement
+    (35) condition -> . statement LESS expression
+    (36) condition -> . expression LESS expression
+    (37) condition -> . statement MOREEQUAL statement
+    (38) condition -> . statement MOREEQUAL expression
+    (39) condition -> . expression MOREEQUAL expression
+    (40) condition -> . statement LESSEQUAL statement
+    (41) condition -> . statement LESSEQUAL expression
+    (42) condition -> . expression LESSEQUAL expression
+    (43) condition -> . statement EQUALEQUAL statement
+    (44) condition -> . statement EQUALEQUAL expression
+    (45) condition -> . expression EQUALEQUAL expression
+    (46) condition -> . statement NOTEQUAL statement
+    (47) condition -> . statement NOTEQUAL expression
+    (48) condition -> . expression NOTEQUAL expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    condition                      shift and go to state 34
+    statement                      shift and go to state 31
+    expression                     shift and go to state 32
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 19
+
+    (16) statement -> OUTPUT LPAREN . expression RPAREN
+    (17) statement -> OUTPUT LPAREN . statement RPAREN
+    (18) statement -> OUTPUT LPAREN . condition RPAREN
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (31) condition -> . statement MORE statement
+    (32) condition -> . statement MORE expression
+    (33) condition -> . expression MORE expression
+    (34) condition -> . statement LESS statement
+    (35) condition -> . statement LESS expression
+    (36) condition -> . expression LESS expression
+    (37) condition -> . statement MOREEQUAL statement
+    (38) condition -> . statement MOREEQUAL expression
+    (39) condition -> . expression MOREEQUAL expression
+    (40) condition -> . statement LESSEQUAL statement
+    (41) condition -> . statement LESSEQUAL expression
+    (42) condition -> . expression LESSEQUAL expression
+    (43) condition -> . statement EQUALEQUAL statement
+    (44) condition -> . statement EQUALEQUAL expression
+    (45) condition -> . expression EQUALEQUAL expression
+    (46) condition -> . statement NOTEQUAL statement
+    (47) condition -> . statement NOTEQUAL expression
+    (48) condition -> . expression NOTEQUAL expression
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 35
+    statement                      shift and go to state 36
+    condition                      shift and go to state 37
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 20
+
+    (1) statement -> NAME EQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 1 (statement -> NAME EQUAL expression .)
+    MORE            reduce using rule 1 (statement -> NAME EQUAL expression .)
+    LESS            reduce using rule 1 (statement -> NAME EQUAL expression .)
+    MOREEQUAL       reduce using rule 1 (statement -> NAME EQUAL expression .)
+    LESSEQUAL       reduce using rule 1 (statement -> NAME EQUAL expression .)
+    EQUALEQUAL      reduce using rule 1 (statement -> NAME EQUAL expression .)
+    NOTEQUAL        reduce using rule 1 (statement -> NAME EQUAL expression .)
+    RPAREN          reduce using rule 1 (statement -> NAME EQUAL expression .)
+    RCURLY          reduce using rule 1 (statement -> NAME EQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+  ! PLUS            [ reduce using rule 1 (statement -> NAME EQUAL expression .) ]
+
+
+state 21
+
+    (4) statement -> NAME EQUAL SPACE . expression
+    (8) statement -> NAME EQUAL SPACE . statement
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 40
+    statement                      shift and go to state 41
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 22
+
+    (5) statement -> NAME EQUAL statement .
+    (23) expression -> statement . PLUS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 5 (statement -> NAME EQUAL statement .)
+    MORE            reduce using rule 5 (statement -> NAME EQUAL statement .)
+    LESS            reduce using rule 5 (statement -> NAME EQUAL statement .)
+    MOREEQUAL       reduce using rule 5 (statement -> NAME EQUAL statement .)
+    LESSEQUAL       reduce using rule 5 (statement -> NAME EQUAL statement .)
+    EQUALEQUAL      reduce using rule 5 (statement -> NAME EQUAL statement .)
+    NOTEQUAL        reduce using rule 5 (statement -> NAME EQUAL statement .)
+    RPAREN          reduce using rule 5 (statement -> NAME EQUAL statement .)
+    RCURLY          reduce using rule 5 (statement -> NAME EQUAL statement .)
+    PLUS            shift and go to state 42
+
+  ! PLUS            [ reduce using rule 5 (statement -> NAME EQUAL statement .) ]
+
+
+state 23
+
+    (25) expression -> term .
+    (26) term -> term . TIMES factor
+    (27) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 25 (expression -> term .)
+    MINUS           reduce using rule 25 (expression -> term .)
+    $end            reduce using rule 25 (expression -> term .)
+    MORE            reduce using rule 25 (expression -> term .)
+    LESS            reduce using rule 25 (expression -> term .)
+    MOREEQUAL       reduce using rule 25 (expression -> term .)
+    LESSEQUAL       reduce using rule 25 (expression -> term .)
+    EQUALEQUAL      reduce using rule 25 (expression -> term .)
+    NOTEQUAL        reduce using rule 25 (expression -> term .)
+    RPAREN          reduce using rule 25 (expression -> term .)
+    RCURLY          reduce using rule 25 (expression -> term .)
+    TIMES           shift and go to state 43
+    DIVIDE          shift and go to state 44
+
+
+state 24
+
+    (30) factor -> LPAREN . expression RPAREN
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 45
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 25
+
+    (28) term -> factor .
+
+    TIMES           reduce using rule 28 (term -> factor .)
+    DIVIDE          reduce using rule 28 (term -> factor .)
+    PLUS            reduce using rule 28 (term -> factor .)
+    MINUS           reduce using rule 28 (term -> factor .)
+    $end            reduce using rule 28 (term -> factor .)
+    MORE            reduce using rule 28 (term -> factor .)
+    LESS            reduce using rule 28 (term -> factor .)
+    MOREEQUAL       reduce using rule 28 (term -> factor .)
+    LESSEQUAL       reduce using rule 28 (term -> factor .)
+    EQUALEQUAL      reduce using rule 28 (term -> factor .)
+    NOTEQUAL        reduce using rule 28 (term -> factor .)
+    RPAREN          reduce using rule 28 (term -> factor .)
+    RCURLY          reduce using rule 28 (term -> factor .)
+
+
+state 26
+
+    (29) factor -> NUMBER .
+
+    TIMES           reduce using rule 29 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 29 (factor -> NUMBER .)
+    PLUS            reduce using rule 29 (factor -> NUMBER .)
+    MINUS           reduce using rule 29 (factor -> NUMBER .)
+    $end            reduce using rule 29 (factor -> NUMBER .)
+    MORE            reduce using rule 29 (factor -> NUMBER .)
+    LESS            reduce using rule 29 (factor -> NUMBER .)
+    MOREEQUAL       reduce using rule 29 (factor -> NUMBER .)
+    LESSEQUAL       reduce using rule 29 (factor -> NUMBER .)
+    EQUALEQUAL      reduce using rule 29 (factor -> NUMBER .)
+    NOTEQUAL        reduce using rule 29 (factor -> NUMBER .)
+    RPAREN          reduce using rule 29 (factor -> NUMBER .)
+    RCURLY          reduce using rule 29 (factor -> NUMBER .)
+
+
+state 27
+
+    (2) statement -> NAME SPACE EQUAL . SPACE expression
+    (3) statement -> NAME SPACE EQUAL . expression
+    (6) statement -> NAME SPACE EQUAL . SPACE statement
+    (7) statement -> NAME SPACE EQUAL . statement
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    SPACE           shift and go to state 47
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 48
+    statement                      shift and go to state 49
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 28
+
+    (9) statement -> NAME LPAREN RPAREN .
+
+    $end            reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    PLUS            reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    MORE            reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    LESS            reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    MOREEQUAL       reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    LESSEQUAL       reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    EQUALEQUAL      reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    NOTEQUAL        reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    RPAREN          reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+    RCURLY          reduce using rule 9 (statement -> NAME LPAREN RPAREN .)
+
+
+state 29
+
+    (11) statement -> CREATE SPACE NAME . LPAREN RPAREN ACTUATE LCURLY
+
+    LPAREN          shift and go to state 50
+
+
+state 30
+
+    (13) statement -> IF LPAREN condition . RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+
+    RPAREN          shift and go to state 51
+
+
+state 31
+
+    (31) condition -> statement . MORE statement
+    (32) condition -> statement . MORE expression
+    (34) condition -> statement . LESS statement
+    (35) condition -> statement . LESS expression
+    (37) condition -> statement . MOREEQUAL statement
+    (38) condition -> statement . MOREEQUAL expression
+    (40) condition -> statement . LESSEQUAL statement
+    (41) condition -> statement . LESSEQUAL expression
+    (43) condition -> statement . EQUALEQUAL statement
+    (44) condition -> statement . EQUALEQUAL expression
+    (46) condition -> statement . NOTEQUAL statement
+    (47) condition -> statement . NOTEQUAL expression
+    (23) expression -> statement . PLUS expression
+
+    MORE            shift and go to state 52
+    LESS            shift and go to state 53
+    MOREEQUAL       shift and go to state 54
+    LESSEQUAL       shift and go to state 55
+    EQUALEQUAL      shift and go to state 56
+    NOTEQUAL        shift and go to state 57
+    PLUS            shift and go to state 42
+
+
+state 32
+
+    (33) condition -> expression . MORE expression
+    (36) condition -> expression . LESS expression
+    (39) condition -> expression . MOREEQUAL expression
+    (42) condition -> expression . LESSEQUAL expression
+    (45) condition -> expression . EQUALEQUAL expression
+    (48) condition -> expression . NOTEQUAL expression
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    MORE            shift and go to state 58
+    LESS            shift and go to state 59
+    MOREEQUAL       shift and go to state 60
+    LESSEQUAL       shift and go to state 61
+    EQUALEQUAL      shift and go to state 62
+    NOTEQUAL        shift and go to state 63
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 33
+
+    (14) statement -> ELF LPAREN condition . RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+
+    RPAREN          shift and go to state 64
+
+
+state 34
+
+    (15) statement -> ELSE LPAREN condition . RPAREN ACTUATE LCURLY statement RCURLY
+
+    RPAREN          shift and go to state 65
+
+
+state 35
+
+    (16) statement -> OUTPUT LPAREN expression . RPAREN
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+    (33) condition -> expression . MORE expression
+    (36) condition -> expression . LESS expression
+    (39) condition -> expression . MOREEQUAL expression
+    (42) condition -> expression . LESSEQUAL expression
+    (45) condition -> expression . EQUALEQUAL expression
+    (48) condition -> expression . NOTEQUAL expression
+
+    RPAREN          shift and go to state 66
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+    MORE            shift and go to state 58
+    LESS            shift and go to state 59
+    MOREEQUAL       shift and go to state 60
+    LESSEQUAL       shift and go to state 61
+    EQUALEQUAL      shift and go to state 62
+    NOTEQUAL        shift and go to state 63
+
+
+state 36
+
+    (17) statement -> OUTPUT LPAREN statement . RPAREN
+    (23) expression -> statement . PLUS expression
+    (31) condition -> statement . MORE statement
+    (32) condition -> statement . MORE expression
+    (34) condition -> statement . LESS statement
+    (35) condition -> statement . LESS expression
+    (37) condition -> statement . MOREEQUAL statement
+    (38) condition -> statement . MOREEQUAL expression
+    (40) condition -> statement . LESSEQUAL statement
+    (41) condition -> statement . LESSEQUAL expression
+    (43) condition -> statement . EQUALEQUAL statement
+    (44) condition -> statement . EQUALEQUAL expression
+    (46) condition -> statement . NOTEQUAL statement
+    (47) condition -> statement . NOTEQUAL expression
+
+    RPAREN          shift and go to state 67
+    PLUS            shift and go to state 42
+    MORE            shift and go to state 52
+    LESS            shift and go to state 53
+    MOREEQUAL       shift and go to state 54
+    LESSEQUAL       shift and go to state 55
+    EQUALEQUAL      shift and go to state 56
+    NOTEQUAL        shift and go to state 57
+
+
+state 37
+
+    (18) statement -> OUTPUT LPAREN condition . RPAREN
+
+    RPAREN          shift and go to state 68
+
+
+state 38
+
+    (22) expression -> expression PLUS . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    term                           shift and go to state 69
+    factor                         shift and go to state 25
+
+state 39
+
+    (24) expression -> expression MINUS . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    term                           shift and go to state 70
+    factor                         shift and go to state 25
+
+state 40
+
+    (4) statement -> NAME EQUAL SPACE expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    MORE            reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    LESS            reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    MOREEQUAL       reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    LESSEQUAL       reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    EQUALEQUAL      reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    NOTEQUAL        reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    RPAREN          reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    RCURLY          reduce using rule 4 (statement -> NAME EQUAL SPACE expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+  ! PLUS            [ reduce using rule 4 (statement -> NAME EQUAL SPACE expression .) ]
+
+
+state 41
+
+    (8) statement -> NAME EQUAL SPACE statement .
+    (23) expression -> statement . PLUS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    MORE            reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    LESS            reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    MOREEQUAL       reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    LESSEQUAL       reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    EQUALEQUAL      reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    NOTEQUAL        reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    RPAREN          reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    RCURLY          reduce using rule 8 (statement -> NAME EQUAL SPACE statement .)
+    PLUS            shift and go to state 42
+
+  ! PLUS            [ reduce using rule 8 (statement -> NAME EQUAL SPACE statement .) ]
+
+
+state 42
+
+    (23) expression -> statement PLUS . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 46
+    expression                     shift and go to state 71
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 43
+
+    (26) term -> term TIMES . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    factor                         shift and go to state 72
+
+state 44
+
+    (27) term -> term DIVIDE . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    factor                         shift and go to state 73
+
+state 45
+
+    (30) factor -> LPAREN expression . RPAREN
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 74
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 46
+
+    (23) expression -> statement . PLUS expression
+
+    PLUS            shift and go to state 42
+
+
+state 47
+
+    (2) statement -> NAME SPACE EQUAL SPACE . expression
+    (6) statement -> NAME SPACE EQUAL SPACE . statement
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 75
+    statement                      shift and go to state 76
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 48
+
+    (3) statement -> NAME SPACE EQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    MORE            reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    LESS            reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    MOREEQUAL       reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    LESSEQUAL       reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    EQUALEQUAL      reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    NOTEQUAL        reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    RPAREN          reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    RCURLY          reduce using rule 3 (statement -> NAME SPACE EQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+  ! PLUS            [ reduce using rule 3 (statement -> NAME SPACE EQUAL expression .) ]
+
+
+state 49
+
+    (7) statement -> NAME SPACE EQUAL statement .
+    (23) expression -> statement . PLUS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    MORE            reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    LESS            reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    MOREEQUAL       reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    LESSEQUAL       reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    EQUALEQUAL      reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    NOTEQUAL        reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    RPAREN          reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    RCURLY          reduce using rule 7 (statement -> NAME SPACE EQUAL statement .)
+    PLUS            shift and go to state 42
+
+  ! PLUS            [ reduce using rule 7 (statement -> NAME SPACE EQUAL statement .) ]
+
+
+state 50
+
+    (11) statement -> CREATE SPACE NAME LPAREN . RPAREN ACTUATE LCURLY
+
+    RPAREN          shift and go to state 77
+
+
+state 51
+
+    (13) statement -> IF LPAREN condition RPAREN . ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+
+    ACTUATE         shift and go to state 78
+
+
+state 52
+
+    (31) condition -> statement MORE . statement
+    (32) condition -> statement MORE . expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 79
+    expression                     shift and go to state 80
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 53
+
+    (34) condition -> statement LESS . statement
+    (35) condition -> statement LESS . expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 81
+    expression                     shift and go to state 82
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 54
+
+    (37) condition -> statement MOREEQUAL . statement
+    (38) condition -> statement MOREEQUAL . expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 83
+    expression                     shift and go to state 84
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 55
+
+    (40) condition -> statement LESSEQUAL . statement
+    (41) condition -> statement LESSEQUAL . expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 85
+    expression                     shift and go to state 86
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 56
+
+    (43) condition -> statement EQUALEQUAL . statement
+    (44) condition -> statement EQUALEQUAL . expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 87
+    expression                     shift and go to state 88
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 57
+
+    (46) condition -> statement NOTEQUAL . statement
+    (47) condition -> statement NOTEQUAL . expression
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    statement                      shift and go to state 89
+    expression                     shift and go to state 90
+    term                           shift and go to state 23
+    factor                         shift and go to state 25
+
+state 58
+
+    (33) condition -> expression MORE . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 91
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 59
+
+    (36) condition -> expression LESS . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 92
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 60
+
+    (39) condition -> expression MOREEQUAL . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 93
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 61
+
+    (42) condition -> expression LESSEQUAL . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 94
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 62
+
+    (45) condition -> expression EQUALEQUAL . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 95
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 63
+
+    (48) condition -> expression NOTEQUAL . expression
+    (22) expression -> . expression PLUS term
+    (23) expression -> . statement PLUS expression
+    (24) expression -> . expression MINUS term
+    (25) expression -> . term
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+    (26) term -> . term TIMES factor
+    (27) term -> . term DIVIDE factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . LPAREN expression RPAREN
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+    NUMBER          shift and go to state 26
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 96
+    term                           shift and go to state 23
+    statement                      shift and go to state 46
+    factor                         shift and go to state 25
+
+state 64
+
+    (14) statement -> ELF LPAREN condition RPAREN . ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+
+    ACTUATE         shift and go to state 97
+
+
+state 65
+
+    (15) statement -> ELSE LPAREN condition RPAREN . ACTUATE LCURLY statement RCURLY
+
+    ACTUATE         shift and go to state 98
+
+
+state 66
+
+    (16) statement -> OUTPUT LPAREN expression RPAREN .
+
+    $end            reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    PLUS            reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    MORE            reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    LESS            reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    MOREEQUAL       reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    LESSEQUAL       reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    EQUALEQUAL      reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+    RCURLY          reduce using rule 16 (statement -> OUTPUT LPAREN expression RPAREN .)
+
+
+state 67
+
+    (17) statement -> OUTPUT LPAREN statement RPAREN .
+
+    $end            reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    PLUS            reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    MORE            reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    LESS            reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    MOREEQUAL       reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    LESSEQUAL       reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    EQUALEQUAL      reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    NOTEQUAL        reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    RPAREN          reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+    RCURLY          reduce using rule 17 (statement -> OUTPUT LPAREN statement RPAREN .)
+
+
+state 68
+
+    (18) statement -> OUTPUT LPAREN condition RPAREN .
+
+    $end            reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    PLUS            reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    MORE            reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    LESS            reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    MOREEQUAL       reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    LESSEQUAL       reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    EQUALEQUAL      reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    NOTEQUAL        reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    RPAREN          reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+    RCURLY          reduce using rule 18 (statement -> OUTPUT LPAREN condition RPAREN .)
+
+
+state 69
+
+    (22) expression -> expression PLUS term .
+    (26) term -> term . TIMES factor
+    (27) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 22 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 22 (expression -> expression PLUS term .)
+    $end            reduce using rule 22 (expression -> expression PLUS term .)
+    MORE            reduce using rule 22 (expression -> expression PLUS term .)
+    LESS            reduce using rule 22 (expression -> expression PLUS term .)
+    MOREEQUAL       reduce using rule 22 (expression -> expression PLUS term .)
+    LESSEQUAL       reduce using rule 22 (expression -> expression PLUS term .)
+    EQUALEQUAL      reduce using rule 22 (expression -> expression PLUS term .)
+    NOTEQUAL        reduce using rule 22 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 22 (expression -> expression PLUS term .)
+    RCURLY          reduce using rule 22 (expression -> expression PLUS term .)
+    TIMES           shift and go to state 43
+    DIVIDE          shift and go to state 44
+
+
+state 70
+
+    (24) expression -> expression MINUS term .
+    (26) term -> term . TIMES factor
+    (27) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 24 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 24 (expression -> expression MINUS term .)
+    $end            reduce using rule 24 (expression -> expression MINUS term .)
+    MORE            reduce using rule 24 (expression -> expression MINUS term .)
+    LESS            reduce using rule 24 (expression -> expression MINUS term .)
+    MOREEQUAL       reduce using rule 24 (expression -> expression MINUS term .)
+    LESSEQUAL       reduce using rule 24 (expression -> expression MINUS term .)
+    EQUALEQUAL      reduce using rule 24 (expression -> expression MINUS term .)
+    NOTEQUAL        reduce using rule 24 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 24 (expression -> expression MINUS term .)
+    RCURLY          reduce using rule 24 (expression -> expression MINUS term .)
+    TIMES           shift and go to state 43
+    DIVIDE          shift and go to state 44
+
+
+state 71
+
+    (23) expression -> statement PLUS expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+    $end            reduce using rule 23 (expression -> statement PLUS expression .)
+    MORE            reduce using rule 23 (expression -> statement PLUS expression .)
+    LESS            reduce using rule 23 (expression -> statement PLUS expression .)
+    MOREEQUAL       reduce using rule 23 (expression -> statement PLUS expression .)
+    LESSEQUAL       reduce using rule 23 (expression -> statement PLUS expression .)
+    EQUALEQUAL      reduce using rule 23 (expression -> statement PLUS expression .)
+    NOTEQUAL        reduce using rule 23 (expression -> statement PLUS expression .)
+    RPAREN          reduce using rule 23 (expression -> statement PLUS expression .)
+    RCURLY          reduce using rule 23 (expression -> statement PLUS expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+  ! PLUS            [ reduce using rule 23 (expression -> statement PLUS expression .) ]
+  ! MINUS           [ reduce using rule 23 (expression -> statement PLUS expression .) ]
+
+
+state 72
+
+    (26) term -> term TIMES factor .
+
+    TIMES           reduce using rule 26 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 26 (term -> term TIMES factor .)
+    PLUS            reduce using rule 26 (term -> term TIMES factor .)
+    MINUS           reduce using rule 26 (term -> term TIMES factor .)
+    $end            reduce using rule 26 (term -> term TIMES factor .)
+    MORE            reduce using rule 26 (term -> term TIMES factor .)
+    LESS            reduce using rule 26 (term -> term TIMES factor .)
+    MOREEQUAL       reduce using rule 26 (term -> term TIMES factor .)
+    LESSEQUAL       reduce using rule 26 (term -> term TIMES factor .)
+    EQUALEQUAL      reduce using rule 26 (term -> term TIMES factor .)
+    NOTEQUAL        reduce using rule 26 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 26 (term -> term TIMES factor .)
+    RCURLY          reduce using rule 26 (term -> term TIMES factor .)
+
+
+state 73
+
+    (27) term -> term DIVIDE factor .
+
+    TIMES           reduce using rule 27 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 27 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 27 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 27 (term -> term DIVIDE factor .)
+    $end            reduce using rule 27 (term -> term DIVIDE factor .)
+    MORE            reduce using rule 27 (term -> term DIVIDE factor .)
+    LESS            reduce using rule 27 (term -> term DIVIDE factor .)
+    MOREEQUAL       reduce using rule 27 (term -> term DIVIDE factor .)
+    LESSEQUAL       reduce using rule 27 (term -> term DIVIDE factor .)
+    EQUALEQUAL      reduce using rule 27 (term -> term DIVIDE factor .)
+    NOTEQUAL        reduce using rule 27 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 27 (term -> term DIVIDE factor .)
+    RCURLY          reduce using rule 27 (term -> term DIVIDE factor .)
+
+
+state 74
+
+    (30) factor -> LPAREN expression RPAREN .
+
+    TIMES           reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    MORE            reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    LESS            reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    MOREEQUAL       reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    LESSEQUAL       reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    EQUALEQUAL      reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+    RCURLY          reduce using rule 30 (factor -> LPAREN expression RPAREN .)
+
+
+state 75
+
+    (2) statement -> NAME SPACE EQUAL SPACE expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    MORE            reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    LESS            reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    MOREEQUAL       reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    LESSEQUAL       reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    EQUALEQUAL      reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    NOTEQUAL        reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    RPAREN          reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    RCURLY          reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+  ! PLUS            [ reduce using rule 2 (statement -> NAME SPACE EQUAL SPACE expression .) ]
+
+
+state 76
+
+    (6) statement -> NAME SPACE EQUAL SPACE statement .
+    (23) expression -> statement . PLUS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    MORE            reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    LESS            reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    MOREEQUAL       reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    LESSEQUAL       reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    EQUALEQUAL      reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    NOTEQUAL        reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    RPAREN          reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    RCURLY          reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .)
+    PLUS            shift and go to state 42
+
+  ! PLUS            [ reduce using rule 6 (statement -> NAME SPACE EQUAL SPACE statement .) ]
+
+
+state 77
+
+    (11) statement -> CREATE SPACE NAME LPAREN RPAREN . ACTUATE LCURLY
+
+    ACTUATE         shift and go to state 99
+
+
+state 78
+
+    (13) statement -> IF LPAREN condition RPAREN ACTUATE . LCURLY NAME LPAREN RPAREN RCURLY
+
+    LCURLY          shift and go to state 100
+
+
+state 79
+
+    (31) condition -> statement MORE statement .
+    (23) expression -> statement . PLUS expression
+
+    RPAREN          reduce using rule 31 (condition -> statement MORE statement .)
+    PLUS            shift and go to state 42
+
+
+state 80
+
+    (32) condition -> statement MORE expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 32 (condition -> statement MORE expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 81
+
+    (34) condition -> statement LESS statement .
+    (23) expression -> statement . PLUS expression
+
+    RPAREN          reduce using rule 34 (condition -> statement LESS statement .)
+    PLUS            shift and go to state 42
+
+
+state 82
+
+    (35) condition -> statement LESS expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 35 (condition -> statement LESS expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 83
+
+    (37) condition -> statement MOREEQUAL statement .
+    (23) expression -> statement . PLUS expression
+
+    RPAREN          reduce using rule 37 (condition -> statement MOREEQUAL statement .)
+    PLUS            shift and go to state 42
+
+
+state 84
+
+    (38) condition -> statement MOREEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 38 (condition -> statement MOREEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 85
+
+    (40) condition -> statement LESSEQUAL statement .
+    (23) expression -> statement . PLUS expression
+
+    RPAREN          reduce using rule 40 (condition -> statement LESSEQUAL statement .)
+    PLUS            shift and go to state 42
+
+
+state 86
+
+    (41) condition -> statement LESSEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 41 (condition -> statement LESSEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 87
+
+    (43) condition -> statement EQUALEQUAL statement .
+    (23) expression -> statement . PLUS expression
+
+    RPAREN          reduce using rule 43 (condition -> statement EQUALEQUAL statement .)
+    PLUS            shift and go to state 42
+
+
+state 88
+
+    (44) condition -> statement EQUALEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 44 (condition -> statement EQUALEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 89
+
+    (46) condition -> statement NOTEQUAL statement .
+    (23) expression -> statement . PLUS expression
+
+    RPAREN          reduce using rule 46 (condition -> statement NOTEQUAL statement .)
+    PLUS            shift and go to state 42
+
+
+state 90
+
+    (47) condition -> statement NOTEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 47 (condition -> statement NOTEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 91
+
+    (33) condition -> expression MORE expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 33 (condition -> expression MORE expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 92
+
+    (36) condition -> expression LESS expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 36 (condition -> expression LESS expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 93
+
+    (39) condition -> expression MOREEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 39 (condition -> expression MOREEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 94
+
+    (42) condition -> expression LESSEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 42 (condition -> expression LESSEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 95
+
+    (45) condition -> expression EQUALEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 45 (condition -> expression EQUALEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 96
+
+    (48) condition -> expression NOTEQUAL expression .
+    (22) expression -> expression . PLUS term
+    (24) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 48 (condition -> expression NOTEQUAL expression .)
+    PLUS            shift and go to state 38
+    MINUS           shift and go to state 39
+
+
+state 97
+
+    (14) statement -> ELF LPAREN condition RPAREN ACTUATE . LCURLY NAME LPAREN RPAREN RCURLY
+
+    LCURLY          shift and go to state 101
+
+
+state 98
+
+    (15) statement -> ELSE LPAREN condition RPAREN ACTUATE . LCURLY statement RCURLY
+
+    LCURLY          shift and go to state 102
+
+
+state 99
+
+    (11) statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE . LCURLY
+
+    LCURLY          shift and go to state 103
+
+
+state 100
+
+    (13) statement -> IF LPAREN condition RPAREN ACTUATE LCURLY . NAME LPAREN RPAREN RCURLY
+
+    NAME            shift and go to state 104
+
+
+state 101
+
+    (14) statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY . NAME LPAREN RPAREN RCURLY
+
+    NAME            shift and go to state 105
+
+
+state 102
+
+    (15) statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY . statement RCURLY
+    (1) statement -> . NAME EQUAL expression
+    (2) statement -> . NAME SPACE EQUAL SPACE expression
+    (3) statement -> . NAME SPACE EQUAL expression
+    (4) statement -> . NAME EQUAL SPACE expression
+    (5) statement -> . NAME EQUAL statement
+    (6) statement -> . NAME SPACE EQUAL SPACE statement
+    (7) statement -> . NAME SPACE EQUAL statement
+    (8) statement -> . NAME EQUAL SPACE statement
+    (9) statement -> . NAME LPAREN RPAREN
+    (10) statement -> . RCURLY
+    (11) statement -> . CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY
+    (12) statement -> . NAME
+    (13) statement -> . IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (14) statement -> . ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY
+    (15) statement -> . ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY
+    (16) statement -> . OUTPUT LPAREN expression RPAREN
+    (17) statement -> . OUTPUT LPAREN statement RPAREN
+    (18) statement -> . OUTPUT LPAREN condition RPAREN
+    (19) statement -> . TRUE
+    (20) statement -> . FALSE
+    (21) statement -> . NONE
+
+    NAME            shift and go to state 2
+    RCURLY          shift and go to state 3
+    CREATE          shift and go to state 4
+    IF              shift and go to state 5
+    ELF             shift and go to state 6
+    ELSE            shift and go to state 7
+    OUTPUT          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    NONE            shift and go to state 11
+
+    statement                      shift and go to state 106
+
+state 103
+
+    (11) statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .
+
+    $end            reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    PLUS            reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    MORE            reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    LESS            reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    MOREEQUAL       reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    LESSEQUAL       reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    EQUALEQUAL      reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    NOTEQUAL        reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    RPAREN          reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+    RCURLY          reduce using rule 11 (statement -> CREATE SPACE NAME LPAREN RPAREN ACTUATE LCURLY .)
+
+
+state 104
+
+    (13) statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME . LPAREN RPAREN RCURLY
+
+    LPAREN          shift and go to state 107
+
+
+state 105
+
+    (14) statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME . LPAREN RPAREN RCURLY
+
+    LPAREN          shift and go to state 108
+
+
+state 106
+
+    (15) statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement . RCURLY
+
+    RCURLY          shift and go to state 109
+
+
+state 107
+
+    (13) statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN . RPAREN RCURLY
+
+    RPAREN          shift and go to state 110
+
+
+state 108
+
+    (14) statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN . RPAREN RCURLY
+
+    RPAREN          shift and go to state 111
+
+
+state 109
+
+    (15) statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .
+
+    $end            reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    PLUS            reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    MORE            reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    LESS            reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    MOREEQUAL       reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    LESSEQUAL       reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    EQUALEQUAL      reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    NOTEQUAL        reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    RPAREN          reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+    RCURLY          reduce using rule 15 (statement -> ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY .)
+
+
+state 110
+
+    (13) statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN . RCURLY
+
+    RCURLY          shift and go to state 112
+
+
+state 111
+
+    (14) statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN . RCURLY
+
+    RCURLY          shift and go to state 113
+
+
+state 112
+
+    (13) statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .
+
+    $end            reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    PLUS            reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    MORE            reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    LESS            reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    MOREEQUAL       reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    LESSEQUAL       reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    EQUALEQUAL      reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    NOTEQUAL        reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    RPAREN          reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    RCURLY          reduce using rule 13 (statement -> IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+
+
+state 113
+
+    (14) statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .
+
+    $end            reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    PLUS            reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    MORE            reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    LESS            reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    MOREEQUAL       reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    LESSEQUAL       reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    EQUALEQUAL      reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    NOTEQUAL        reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    RPAREN          reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+    RCURLY          reduce using rule 14 (statement -> ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 20 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 22 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 41 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 48 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 71 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 71 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 75 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 76 resolved as shift
