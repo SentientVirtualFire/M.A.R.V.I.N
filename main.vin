@@ -1,9 +1,13 @@
 create owo2()=>{
-output(1)
+  output(1)
 }
+
 create owo()=>{
-output(1+1)
-name=1
-output(name)
-if(1>0)=>{owo2()}
+  output(1+1)
+  name=1
+  output(name)
+  if(1>0)=>{
+    owo2()
+  }
 }
+

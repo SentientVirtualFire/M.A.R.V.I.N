@@ -120,14 +120,19 @@ def p_statement_actuate(p):
     print(None)
 """
 def p_expression_string(p):
-  '$""'
+  'HASH string'
+  global string_itself
+  p[0] = string_itself
+  string_itself = ""
 def p_string_quote(p):
   'string : QUOTE'
   global string_state
+  global string_itself
   if(string_state == True):
     string_state = False
   else:
     string_state = True
+    p[0] = string_itself
 
 def p_string_string(p):
   'string : STRING'
