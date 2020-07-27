@@ -120,7 +120,7 @@ def p_statement_actuate(p):
     print(None)
 """
 def p_expression_string(p):
-  ''
+  '$""'
 def p_string_quote(p):
   'string : QUOTE'
   global string_state
@@ -130,7 +130,7 @@ def p_string_quote(p):
     string_state = True
 
 def p_string_string(p):
-  'expression : STRING'
+  'string : STRING'
   global string_state
   global string_itself
   if(string_state == True):
