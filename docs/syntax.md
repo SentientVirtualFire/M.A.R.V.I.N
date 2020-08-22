@@ -82,7 +82,7 @@ while (<condition>) => {
 
 ```
 mod math
-mod math/sqt
+at math mod sqt
 ```
 ## funcs
 ---------------------------------
