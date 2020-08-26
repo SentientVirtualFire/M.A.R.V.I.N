@@ -27,7 +27,9 @@ reserved_tokens={
   'obj':'CIRCLE',
   'start':'START',
   'reveal':'REV',
-  'rand':'RAND'
+  'rand':'RAND',
+  'physics':'PHYS',
+  'changeCLR':'CLR'
 }
 tokens = list(reserved_tokens.values())+[
     'NUMBER',
@@ -75,7 +77,7 @@ t_STRING =  r'\"([^\\\n]|(\\.))*?\"'
 #I DONT LIKE REGEX ANYMORE
 t_LIST =    r'\[(((\"([^\\\n]|(\\.))*?\")|(\d))(,)+)*\]'
 t_ARGS =    r'\((((\D)[^\"])(,)*)+\)'
-t_ARGSR =    r'\((((\"([^\\\n]|(\\.))*?\")|(\d)*)(,)+)+\)'
+t_ARGSR =    r'\((((\-)*((\"([^\\\n]|(\\.))*?\")|(\d)*))(,)+)+\)'
 def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     if(string_state == True):

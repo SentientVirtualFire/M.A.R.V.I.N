@@ -5,7 +5,8 @@ from random import randint
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import animation
-
+from math import sqrt
+from .physics import *
 circles = []
 
 fig = plt.figure()
@@ -13,6 +14,13 @@ fig.set_dpi(100)
 fig.set_size_inches(7, 6.5)
 
 ax = plt.axes(xlim=(0, 50), ylim=(0, 50))
+
+
+def change_circle_color(circle,colour):
+  x,y = circle.center
+  circle1 = plt.Circle((x,y),radius=1, color=colour)
+  ax.add_artist(circle1)
+  return circle1
 
 def circle(radius,center,colour=None,save=None):
   circle1 = plt.Circle(center,radius=radius, color=colour)
@@ -73,10 +81,30 @@ for_block = {"code":[]}
 imports = ""
 error_state=False
 circle_names = {}
+physics=False
+
 def animate(v):
+    global circles
+    circles[1].color = (255,255,0)
     for i in functions['animate']['code']:
       parse(i)
+    if physics == True:
+      for i in range(len(circles)-1):
+        circles[i].center = frame(circles[i])
+        for v in range(len(circles)):
+          if i!=v:
+            if(collision(circles[i],circles[v]) == True):
+              x,y = circles[v].center
+              circles[v].center = (x+2,y+2)
     return circles
+
+def p_statement_changecolor(p):
+  'statement : CLR SPACE NAME argumentr'
+  colours = p[4][0]
+  circles[circle_names[p[3]]] = change_circle_color(circles[circle_names[p[3]]],(int(colours[0])/255,int(colours[1])/255,int(colours[2])/255))
+  p[0] = 'changed'
+
+
 def p_statement_circle(p):
   'statement : CIRCLE SPACE NAME EQUAL argumentr'
   if(for_state == True):
@@ -115,7 +143,7 @@ def p_statement_circlechange(p):
 def p_statement_start(p):
   'statement : START LPAREN RPAREN'
   print(functions['animate'])
-  anim = animation.FuncAnimation(fig, animate, frames=360,interval=200,blit=True)
+  anim = animation.FuncAnimation(fig, animate, frames=360,interval=20,blit=True)
   plt.show()
   p[0] = p[3]
   
@@ -301,6 +329,12 @@ def p_statement_output(p):
       p[0] = p[2][0]
       print(names[p[2][0][0]])
   
+def p_statement_physics(p):
+  'statement : PHYS LPAREN RPAREN'
+  global physics
+  physics = True
+  p[0] = "you found me. The egg. I have been impisoned in here since the (g)od of randomness THE MIGHTY EGG left me here. Done leave me... no... DONT GO AWAY... WHY!!!"
+
 
 def p_statement_true(p):
   '''statement : TRUE'''

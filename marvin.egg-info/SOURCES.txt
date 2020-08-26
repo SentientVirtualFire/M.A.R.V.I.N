@@ -4,6 +4,7 @@ marvin/lexer.py
 marvin/parser.out
 marvin/parser.py
 marvin/parsetab.py
+marvin/physics.py
 marvin.egg-info/PKG-INFO
 marvin.egg-info/SOURCES.txt
 marvin.egg-info/dependency_links.txt

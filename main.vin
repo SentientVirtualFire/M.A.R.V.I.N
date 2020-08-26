@@ -1,15 +1,19 @@
+physics()
+obj c1=(20,20,)
 obj c2=(20,15,)
 obj c3=(20,15,)
 obj c4=(20,15,)
 obj c5=(20,15,)
 obj c6=(20,15,)
+obj c7=(55,15,)
+changeCLR c6(200,130,110,)
 create animate()=>{
   rand c2
   rand c3
   rand c4
   rand c5
   rand c6
-  obj c1=(1,1,)
+  obj c1=(-1,1,)
 }
 start()
 for(i=0;5)=>{
