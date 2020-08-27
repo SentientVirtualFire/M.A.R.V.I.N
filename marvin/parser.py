@@ -100,9 +100,16 @@ def animate(v):
 
 def p_statement_changecolor(p):
   'statement : CLR SPACE NAME argumentr'
-  colours = p[4][0]
-  circles[circle_names[p[3]]] = change_circle_color(circles[circle_names[p[3]]],(int(colours[0])/255,int(colours[1])/255,int(colours[2])/255))
-  p[0] = 'changed'
+  if(for_state == True):
+    p[4] = p[4][2]
+    for_block["code"].append("".join(p[1:]))
+  elif(cur_name != ""):
+    p[4] = p[4][2]
+    functions[cur_name]["code"].append("".join(p[1:]))
+  else:
+    colours = p[4][0]
+    circles[circle_names[p[3]]] = change_circle_color(circles[circle_names[p[3]]],(int(colours[0])/255,int(colours[1])/255,int(colours[2])/255))
+    p[0] = 'changed'
 
 
 def p_statement_circle(p):
