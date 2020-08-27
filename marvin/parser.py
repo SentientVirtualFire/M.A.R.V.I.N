@@ -82,9 +82,10 @@ imports = ""
 error_state=False
 circle_names = {}
 physics=False
-
+circle_touches={}
 def animate(v):
     global circles
+    global names
     circles[1].color = (255,255,0)
     for i in functions['animate']['code']:
       parse(i)
@@ -94,10 +95,21 @@ def animate(v):
         for v in range(len(circles)):
           if i!=v:
             if(collision(circles[i],circles[v]) == True):
-              x,y = circles[v].center
-              circles[v].center = (x+2,y+2)
+              key_list = list(circle_names.keys())
+              names['nowTouched'] = key_list[v]
+              try:
+                parse(circle_touches[key_list[i]]["ontouch"])
+                x,y = circles[v].center
+                circles[v].center = (x+2,y+2)
+              except:
+                x,y = circles[v].center
+                circles[v].center = (x+2,y+2)
     return circles
 
+
+def p_statement_touch(p):
+  'statement : TOUCH SPACE NAME ACTUATE statement'
+  circle_touches[p[3]]['onTouch'] = p[5]
 def p_statement_changecolor(p):
   'statement : CLR SPACE NAME argumentr'
   if(for_state == True):
@@ -109,7 +121,8 @@ def p_statement_changecolor(p):
   else:
     colours = p[4][0]
     circles[circle_names[p[3]]] = change_circle_color(circles[circle_names[p[3]]],(int(colours[0])/255,int(colours[1])/255,int(colours[2])/255))
-    p[0] = 'changed'
+    p[4] = p[4][2]
+    p[0]="".join(p[1:])
 
 
 def p_statement_circle(p):
@@ -131,7 +144,8 @@ def p_statement_circle(p):
     except:
       circle(1,(int(p[5][0][0]),int(p[5][0][1])))
       circle_names[p[3]] = len(circles)-1
-      p[0]=p[3]
+      p[5] = p[5][2]
+      p[0]="".join(p[1:])
 def p_statement_randmove(p):
   'statement : RAND SPACE NAME'
   if(for_state == True):
@@ -141,12 +155,11 @@ def p_statement_randmove(p):
   else:
     x,y = circles[circle_names[p[3]]].center
     circles[circle_names[p[3]]].center = ((x+(randint(1,10)-randint(1,10))/10),(y+(randint(1,10)-randint(1,10))/10))
+    p[0]="".join(p[1:])
 def p_statement_reveal(p):
   'statement : REV LPAREN RPAREN'
   reveal()
-def p_statement_circlechange(p):
-  'statement : CIRCLE SPACE NAME EQUAL NUMBER'
-  circles[circle_names[p[2]]] = circles[circle_names[p[2]]]+p[4]
+  p[0]="".join(p[1:])
 def p_statement_start(p):
   'statement : START LPAREN RPAREN'
   print(functions['animate'])
@@ -197,7 +210,8 @@ def p_statement_assign(p):
       names[p[1]] = p[4]
     else:
       names[p[1]] = p[3]
-    p[0] = p[1]
+    p[3] = str(p[3])
+    p[0]="".join(p[1:])
 
 def p_statement_funcNoArg(p):
   '''statement : NAME LPAREN RPAREN

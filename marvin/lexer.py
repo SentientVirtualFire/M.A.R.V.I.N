@@ -29,7 +29,8 @@ reserved_tokens={
   'reveal':'REV',
   'rand':'RAND',
   'physics':'PHYS',
-  'changeCLR':'CLR'
+  'changeCLR':'CLR',
+  'touch':'TOUCH'
 }
 tokens = list(reserved_tokens.values())+[
     'NUMBER',
