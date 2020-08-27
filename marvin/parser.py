@@ -109,7 +109,7 @@ def animate(v):
 
 def p_statement_touch(p):
   'statement : TOUCH SPACE NAME ACTUATE statement'
-  circle_touches[p[3]]['onTouch'] = p[5]
+  circle_touches[p[3]]= {"onTouch":p[5]}
 def p_statement_changecolor(p):
   'statement : CLR SPACE NAME argumentr'
   if(for_state == True):
