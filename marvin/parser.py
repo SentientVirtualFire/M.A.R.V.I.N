@@ -110,8 +110,8 @@ def animate(v):
 
 
 def p_statement_touch(p):
-  'statement : TOUCH SPACE NAME ACTUATE SEMI NAME LPAREN RPAREN'
-  circle_touches[p[3]]= {"onTouch":functions[p[6]]['code']}
+  'statement : TOUCH SPACE NAME ACTUATE NAME'
+  circle_touches[p[3]]= {"onTouch":functions[p[5]]['code']}
 def p_statement_changecolor(p):
   'statement : CLR SPACE NAME argumentr'
   if(for_state == True):
@@ -279,7 +279,7 @@ def p_statement_if(p):
     p[0] = False
 
 def p_statement_elf(p):
-  'statement : ELF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY'
+  'statement : ELF LPAREN condition RPAREN ACTUATE LCURLY NAME RCURLY'
   global if_right_yet
   global if_state
   if(if_state == True):
@@ -296,7 +296,7 @@ def p_statement_elf(p):
     p[0] = False
 
 def p_statement_else(p):
-  'statement : ELSE ACTUATE LCURLY NAME LPAREN RPAREN RCURLY'
+  'statement : ELSE ACTUATE LCURLY NAME RCURLY'
   global if_right_yet
   global if_state
   if(if_state == True):
