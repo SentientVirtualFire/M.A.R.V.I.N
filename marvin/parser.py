@@ -111,7 +111,7 @@ def animate(v):
 
 def p_statement_touch(p):
   'statement : TOUCH SPACE NAME ACTUATE SEMI NAME LPAREN RPAREN'
-  circle_touches[p[3]]= {"onTouch":functions[p[5]]['code']}
+  circle_touches[p[3]]= {"onTouch":functions[p[6]]['code']}
 def p_statement_changecolor(p):
   'statement : CLR SPACE NAME argumentr'
   if(for_state == True):
