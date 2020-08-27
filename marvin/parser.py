@@ -83,6 +83,7 @@ error_state=False
 circle_names = {}
 physics=False
 circle_touches={}
+touch_state=False
 def animate(v):
     global circles
     global names
@@ -98,7 +99,8 @@ def animate(v):
               key_list = list(circle_names.keys())
               names['nowTouched'] = key_list[v]
               try:
-                parse(circle_touches[key_list[i]]["ontouch"])
+                for m in circle_touches[key_list[i]]["ontouch"]:
+                  parse(i)
                 x,y = circles[v].center
                 circles[v].center = (x+2,y+2)
               except:
@@ -108,8 +110,8 @@ def animate(v):
 
 
 def p_statement_touch(p):
-  'statement : TOUCH SPACE NAME ACTUATE statement'
-  circle_touches[p[3]]= {"onTouch":p[5]}
+  'statement : TOUCH SPACE NAME ACTUATE NAME LPAREN RPAREN'
+  circle_touches[p[3]]= {"onTouch":functions[p[5]]['code']}
 def p_statement_changecolor(p):
   'statement : CLR SPACE NAME argumentr'
   if(for_state == True):
@@ -271,6 +273,7 @@ def p_statement_if(p):
   if_state = True
   if(p[3] == True):
     if_right_yet = True
+    parse(functions[p[7]]['code'])
     p[0] = p[7]
   else:
     p[0] = False
@@ -283,6 +286,7 @@ def p_statement_elf(p):
     if(p[3] == True):
       if(if_right_yet == False):
         if_right_yet = True
+        parse(functions[p[7]]['code'])
         p[0] = p[7]
     else:
       p[0] = False
@@ -292,17 +296,14 @@ def p_statement_elf(p):
     p[0] = False
 
 def p_statement_else(p):
-  'statement : ELSE LPAREN condition RPAREN ACTUATE LCURLY statement RCURLY'
+  'statement : ELSE ACTUATE LCURLY NAME LPAREN RPAREN RCURLY'
   global if_right_yet
   global if_state
   if(if_state == True):
-    if(p[3] == True):
       if(if_right_yet == False):
         if_right_yet = True
-        p[0] = p[7]
-      if_state = False
-    else:
-      p[0] = False
+        parse(functions[p[4]]['code'])
+        p[0] = p[4]
       if_state = False
   else:
     print("\033[91mLOGIC error in input! try adding an if at the start")
