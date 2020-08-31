@@ -1,3 +1,11 @@
+create func()=>{
+  output("true",)
+}
+create func2()=>{
+  output("fd",)
+}
+if(1>0)=>{func}
+else=>{func2}
 physics()
 obj c1=(20,20,)
 obj c2=(20,15,)

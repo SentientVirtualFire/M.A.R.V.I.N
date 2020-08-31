@@ -8,12 +8,8 @@ from matplotlib import animation
 from math import sqrt
 from .physics import *
 circles = []
-
-fig = plt.figure()
-fig.set_dpi(100)
-fig.set_size_inches(7, 6.5)
-
-ax = plt.axes(xlim=(0, 50), ylim=(0, 50))
+fig=""
+ax=""
 
 
 def change_circle_color(circle,colour):
@@ -164,7 +160,6 @@ def p_statement_reveal(p):
   p[0]="".join(p[1:])
 def p_statement_start(p):
   'statement : START LPAREN RPAREN'
-  print(functions['animate'])
   anim = animation.FuncAnimation(fig, animate, frames=360,interval=20,blit=True)
   plt.show()
   p[0] = p[3]
@@ -267,13 +262,14 @@ def p_statement_expr(t):
       t[0] = names[t[1]]
 
 def p_statement_if(p):
-  'statement : IF LPAREN condition RPAREN ACTUATE LCURLY NAME LPAREN RPAREN RCURLY'
+  'statement : IF LPAREN condition RPAREN ACTUATE LCURLY NAME RCURLY'
   global if_right_yet
   global if_state
   if_state = True
   if(p[3] == True):
     if_right_yet = True
-    parse(functions[p[7]]['code'])
+    for i in functions[p[7]]['code']:
+      parse(i)
     p[0] = p[7]
   else:
     p[0] = False
@@ -286,7 +282,8 @@ def p_statement_elf(p):
     if(p[3] == True):
       if(if_right_yet == False):
         if_right_yet = True
-        parse(functions[p[7]]['code'])
+        for i in functions[p[7]]['code']:
+          parse(i)
         p[0] = p[7]
     else:
       p[0] = False
@@ -302,7 +299,8 @@ def p_statement_else(p):
   if(if_state == True):
       if(if_right_yet == False):
         if_right_yet = True
-        parse(functions[p[4]]['code'])
+        for i in functions[p[4]]['code']:
+          parse(i)
         p[0] = p[4]
       if_state = False
   else:
@@ -353,6 +351,13 @@ def p_statement_output(p):
   
 def p_statement_physics(p):
   'statement : PHYS LPAREN RPAREN'
+  global fig
+  global ax
+  fig = plt.figure()
+  fig.set_dpi(100)
+  fig.set_size_inches(7, 6.5)
+
+  ax = plt.axes(xlim=(0, 50), ylim=(0, 50))
   global physics
   physics = True
   p[0] = "you found me. The egg. I have been impisoned in here since the (g)od of randomness THE MIGHTY EGG left me here. Done leave me... no... DONT GO AWAY... WHY!!!"

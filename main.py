@@ -1,6 +1,5 @@
 from marvin.lexer import lexer
 from marvin.parser import parse
-import matplotlib.pyplot as plt
 from os import system
 import textwrap 
 code = open("main.vin","r").readlines()
