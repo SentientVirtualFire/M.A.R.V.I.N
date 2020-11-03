@@ -1,6 +1,6 @@
 # M.A.R.V.I.N
 
-A language to have fun with.
+A language to have fun with. Mostly just to simulate science experiments
 
 # Important stuff to know before you delve into the documentation
 
